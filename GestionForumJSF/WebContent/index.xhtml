@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+
+	<title>Bonjour</title>
+	<link href="resources/bootstrap-4.3.1-dist/css/bootstrap.css"
+    rel="stylesheet" />
+<link href="resources/bootstrap-4.3.1-dist/css/custom-style.css"
+    rel="stylesheet" />
+    <ui:insert name="header">
+		<ui:include src="headerlogin.xhtml" />
+	</ui:insert>
+</h:head>
+<h:body bgcolor="white" class="big-banner">
+
+	
+		<div align="center" >
+            <h:form>
+            <p:panelGrid style="margin-top:200px">
+           
+			<table>
+				<tr>
+
+					<td><h3 style="color:white;">Nom :</h3></td>
+					<td><p:inputText value="#{controllerUserBean.user.nom}" /></td>
+				</tr>
+
+				<tr>
+					<td><h3 style="color:white;">Password :</h3></td>
+					<td><p:password id="nonFeedback"
+							value="#{controllerUserBean.user.pass}" /></td>
+				</tr>
+			</table>
+			<br/>
+			<h:commandButton class="btn btn-primary" value="login"
+				action="#{controllerUserBean.loginuser}" />
+				
+			<h:button class="btn btn-success" value="S'inscrire"  outcome="/inscription.xhtml" >
+				<f:param name="foo" value="bar" />
+
+		
+			</h:button>
+</p:panelGrid>
+	</h:form>
+			</div>
+			
+
+	
+</h:body>
+<div id="footer">
+	<ui:insert name="footer">
+		<ui:include src="footerlogin.xhtml" />
+	</ui:insert>
+</div>
+</html>

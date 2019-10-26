@@ -1,0 +1,92 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+<title>User</title>
+<link href="resources/bootstrap-4.3.1-dist/css/bootstrap.css"
+    rel="stylesheet" />
+<link href="resources/bootstrap-4.3.1-dist/css/custom-style.css"
+    rel="stylesheet" />
+       <ui:insert name="header">
+		<ui:include src="headeruser.xhtml" />
+	</ui:insert>
+</head>
+<h:body>
+	<style type="text/css">
+.logo {
+	width: 5%
+}
+
+.detail {
+	width: 95%;
+	padding-left: 25px;
+}
+
+.detail td {
+	font-size: 24px;
+}
+</style>
+
+	<h2>Liste des categorie</h2>
+	<hr/>
+	<h:form >
+	
+
+		<p:repeat value="#{contollerDiscussionBean.listediscussion}" var="disc">
+			<h:panelGrid columns="2" style="width:100%"
+				columnClasses="logo,detail">
+				<hr />
+			<h:commandButton class="btn btn-outline-primary" value="choisir cette categorie"
+					action="#{controllerMessageBean.afficherMessage(disc.id)}" />
+				<p:accordionPanel>
+				<p:tab title="#{disc.nom}">
+					<h:panelGrid columns="2" cellpadding="10">
+						<h:outputText value="#{disc.description}" />
+					</h:panelGrid>
+				</p:tab>
+				
+			</p:accordionPanel>
+			</h:panelGrid>
+			<hr />
+		</p:repeat>
+		
+
+		<h2 align="center">Creer nouvelle discussion</h2>
+			<table align="center">
+			<tr>
+				<td><h:outputLabel value="iD user" /></td>
+				<td><h:inputText
+						value="#{controllerUserBean.userv.id}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="ID Forum" /></td>
+				<td><h:inputText
+						value="#{contollerDiscussionBean.id_forum}" /></td>
+			</tr>
+			
+			<tr>
+				<td><h:outputLabel value="Titre: " /></td>
+				<td><h:inputText
+						value="#{contollerDiscussionBean.discussion.nom}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Description: " /></td>
+				<td><h:inputTextarea
+						value="#{contollerDiscussionBean.discussion.description}" /></td>
+			</tr>
+		</table>
+		<div align="center">
+		<h:commandButton  class="btn btn-success" value="Ajoute Discussion"
+			action="#{contollerDiscussionBean.creatediscussion}" />
+			</div>
+<hr />
+
+	</h:form>
+</h:body>
+<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+</html>

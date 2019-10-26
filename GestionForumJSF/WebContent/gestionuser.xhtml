@@ -1,0 +1,96 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Gestion des users</title>
+	<div id="header">
+	<ui:insert name="header">
+		<ui:include src="headeradmin.xhtml" />
+	</ui:insert>
+</div>
+	<link href="resources/bootstrap-4.3.1-dist/css/bootstrap.css"
+    rel="stylesheet" />
+<link href="resources/bootstrap-4.3.1-dist/css/custom-style.css"
+    rel="stylesheet" />
+</h:head>
+<h:body bgcolor="white">
+	<hr />
+	<h:form>
+		<table>
+			<tr>
+				<td><h:outputLabel value="ID: " /></td>
+				<td><h:inputText value="#{controllerUserBean.user.id}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="NOM: " /></td>
+				<td><h:inputText value="#{controllerUserBean.user.nom}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value="Pass: " /></td>
+				<td><h:inputText value="#{controllerUserBean.user.pass}" /></td>
+			</tr>
+			<tr>
+				<td><p:outputLabel value="type:" for="dd" /></td>
+				<td><p:autoComplete id="dd" dropdown="true"
+						value="#{controllerUserBean.user.type}"
+						completeMethod="#{controllerUserBean.completeText}" /></td>
+			</tr>
+		</table>
+		<h:commandButton class="btn btn-success" value="New Client"
+			action="#{controllerUserBean.createuser}" />
+		<h:commandButton class="btn btn-info" value="Update"
+			action="#{controllerUserBean.updateuser}" />
+
+		<hr />
+		<h1>Liste des utilisateurs du platforme</h1>
+		<hr />
+		<h:dataTable value="#{controllerUserBean.listeuser}" var="c"
+			styleClass="client-table" headerClass="client-table-header"
+			rowClasses="client-table-odd-row,client-table-even-row">
+		
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="NOM" />
+				</f:facet>
+				<h:outputText value="#{c.nom}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Pass" />
+				</f:facet>
+				<h:outputText value="**Hidden**" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="type" />
+				</f:facet>
+				<h:outputText value="#{c.type}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="ACTION" />
+				</f:facet>
+				<h:commandButton class="btn btn-danger" value="delete"
+					action="#{controllerUserBean.deleteuser(c)}" />
+			</h:column>
+			<h:column>
+				<f:facet name="header">
+					<h:outputLabel value="Edite" />
+				</f:facet>
+				<h:commandButton class="btn btn-warning"  value="Edite"
+					action="#{controllerUserBean.miseenforme(c)}" />
+			</h:column>
+
+
+		</h:dataTable>
+	</h:form>
+</h:body>
+<div id="footer">
+	<ui:insert name="footer">
+		<ui:include src="footer.xhtml" />
+	</ui:insert>
+</div>
+</html>

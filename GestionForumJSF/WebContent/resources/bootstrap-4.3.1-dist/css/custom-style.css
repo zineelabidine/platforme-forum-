@@ -1,0 +1,16 @@
+.big-banner {
+	background-image: url('../work8.jpg');
+background-size: 100%;
+}
+
+.wrapper {
+	display: inline;
+}
+
+.content {
+	display: inline;
+}
+
+.container {
+	text-align: center;
+}

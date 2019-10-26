@@ -1,0 +1,43 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+<ui:insert name="header">
+		<ui:include src="headerlogin.xhtml" />
+	</ui:insert>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>S'inscrire</title>
+	<h2>S'inscrire</h2>
+	<div id="header">
+</div>
+</h:head>
+<h:body bgcolor="white">
+	<hr />
+	<h:form>
+	<div align="center">
+		<table>
+
+			<tr>
+				<td><h:outputLabel value=" Nom: " /></td>
+				<td><h:inputText value="#{controllerUserBean.user.nom}" /></td>
+			</tr>
+			<tr>
+				<td><h:outputLabel value=" Password: " /></td>
+				<td><h:inputText value="#{controllerUserBean.user.pass}" /></td>
+			</tr>
+
+		</table>
+		<h:commandButton value="S'inscrire"
+			action="#{controllerUserBean.inscription}" />
+			</div>
+	</h:form>
+	<hr/>
+</h:body>
+<div id="footer">
+	<ui:insert name="footer">
+		<ui:include src="footerlogin.xhtml" />
+	</ui:insert>
+</div>
+</html>
